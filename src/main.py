@@ -1,5 +1,6 @@
 from parser import PDFParser
 from chunker import DocumentChunker
+from embedder import Embedder
 
 def main():
 
@@ -10,13 +11,14 @@ def main():
 
     chunker = DocumentChunker()
     chunks = chunker.split(documents)
-
     print(f"Number of chunks: {len(chunks)}\n")
-    print("\nFirst chunk:\n")
-    print(chunks[0].page_content)
-
+    #print("\nFirst chunk:\n")
+    #print(chunks[0].page_content)
     
-    
+    embedder = Embedder()
+    embeddings = embedder.encode(chunks)
+    #print(f"Generated embeddings for {len(embeddings)} chunks.")
+    print(embeddings.shape)
 
 if __name__ == "__main__":
     main()
