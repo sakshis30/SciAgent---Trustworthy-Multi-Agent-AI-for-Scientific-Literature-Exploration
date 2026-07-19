@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+
+  sciagent:
+
+    build: .
+
+    container_name: sciagent
+
+    ports:
+      - "8501:8501"
+
+    volumes:
+      - ./data:/app/data
+
+    restart: unless-stopped
